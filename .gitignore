@@ -5,4 +5,3 @@ debug.pid
 *.tmp
 *.mp3
 logs/
-/config
