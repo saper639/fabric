@@ -1,0 +1,14 @@
+<ul class="tabmenu" data-jc="tabmenu" data-jc-path="tab.result">
+    <li data-value="View"><i class="fa fa-eye"></i> View</li>
+    <li data-value="Json" data-class='text-green'><i class="fa fa-file-code-o"></i> JSON</li>
+</ul>
+<div data-jc="visible" data-jc-path="tab.result" data-if="value === 'View'" class="hidden pr">
+ <div class='eScroll ovfl' id='View'></div>
+</div>                
+<div data-jc="visible" data-jc-path="tab.result" data-if="value === 'Json'" class="hidden pr">
+  <div class='eScroll'> 
+    <div data-jc="codemirror" data-jc-config="type:application/ld+json;height:auto;keyMap:sublime;theme:eclipse;fullscreen:true;brackets:true" data-jc-path="form.json" style="position:relative;height:100%"></div>  
+  </div>
+</div> 
+<script> 
+</script>
