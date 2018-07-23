@@ -7,5 +7,5 @@ Uses:
 * [jComponent](https://github.com/totaljs/jComponent) 
 * **[Download the existing jComponents](https://componentator.com/)** 
 
-Screnshot:
+Screenshot:
 ![mind](./screen_1.jpg)
