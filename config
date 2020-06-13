@@ -1,6 +1,5 @@
-name                            : Fabric
-author                          : Votak.org
-version                         : 1.01
-secret                          : gfgerwerw123
-password_salt                   : 123abcdefg
-log                             : true
+name                      : Fabric
+version                   : 0.0.1
+author                    : Alexey Senotrsuov(Saper639)
+default_port              : 2229
+basic			 		  : {"user": "admin", "pass": "pass"}	

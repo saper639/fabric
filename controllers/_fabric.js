@@ -1,14 +1,19 @@
 exports.install = function() {
-	F.route('/fabric/form',      form_save,    ['authorize', 'post',   '*Fabric']);    
-	F.route('/fabric/form',      form,         ['authorize', '@admin', '@manager', '*Fabric']);    
+	F.route('/fabric/{name}',      	  fab_get,              ['*Fabric']);    
+	F.route('/fabric/save',      	  fab_save,     ['post', '*Fabric']);    
+	F.route('/fabric/query',     	  fab_query,            ['*Fabric']);    
 }
 
-function form_save() {
-	var self = this;	
-	self.body.$save(self, self.callback());
+function fab_get(name) {
 }
 
-function form() {
+function fab_save() {
 	var self = this;    		
-	self.$get(self.query, self.callback());    	
+	self.body.$save(self, self.callback());
 }	
+
+function fab_query() {
+	var self = this;    		
+	self.$query(self.query, self.callback());    	
+}	
+

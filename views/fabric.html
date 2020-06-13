@@ -1,73 +1,121 @@
-@{if user }    
-	<section class="content-header">
-		@{helper('breadcrump')}			
-	</section>
-@{fi}
-<div data-jc="autocomplete"></div>
-<nav class="navbar navbar-default mb5">
-	<div class="container-fluid">
-		<form class="navbar-form navbar-left mv5">
-	        <div class="form-group" style='width:400px;'>
-	          <div data-jc="dropdown" data-jc-path="curForm" data-jc-config="datasource:Fab.chForm;type:number;placeholder:Choice form"></div>
-	        </div>
-        	<div class="btn-group btn-group-sm m5" role="group">
-        		<button type="button" class="btn btn-default" data-jc="click" data-jc-path="Fab.formNew" title="Create new form"><i class="fa fa-file-o fa-lg" ></i></button>
-  				<button type="button" class="btn btn-default" data-jc="click" data-jc-path="Fab.formSave" title="Save"><i class="fa fa-floppy-o fa-lg" ></i></button>
-  				<button type="button" class="btn btn-primary" data-jc="click" data-jc-path="Fab.liveView" title="Live View"><i class="fa fa-play fa-lg"></i></button>
-			</div>
-      	</form>
-      	<form class="navbar-form navbar-right mv5">
-      		<div class="btn-group btn-group-sm m5" role="group">
-      			<button type="button" class="btn btn-default" title="Помощь по созданию форм"><i class="fa fa-question" aria-hidden="true"></i></button>      			
-      		</div>	
-      	</form>
-	</div>
-</nav>
-<div class='mainPanels'>
-	<div id="innerTabLayout">	
-		<div class="outer-west">
-			<div class='panel panel-default eventPanel pr'>    
-  				<div class="panel-body p5 pr">
-					<div data-jc="page" data-template="/templates/fabric/tab_designer.html"></div>
-				</div>
-			</div>		 
+@{layout('')}
+@{title(config.name)}
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=10" />
+	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no, viewport-fit=cover" />	
+	@{import('meta', 'head', 'vendor.min.js', 'vendor.min.css', 'app.min.js', 'app.min.css', 'favicon.ico')}
+</head>
+<body>
+<div data---="autocomplete__null__height:150"></div>
+<div data---="notify"></div>	
+<header>
+    <nav class="navbar navbar-default mb5">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse">
+            	<span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="#">@{config.name}</a>
+        </div>      
+        <div class="collapse navbar-collapse" id="navbar-collapse" data---="selected__common.page__selector:li;class:active;">
+        	<ul class="nav navbar-nav">
+      			<li data-if="new"><a href="#" onclick="formNew()" title="New form"><i class="fa fa-file-o" ></i> New</a></li>
+      			<li data-if="new"><a href="#" onclick="formSave()" title="Save form"><i class="fa fa-floppy-o" ></i> Save</a></li>      
+      			<li data-if="new"><a href="#" onclick="liveView()" title="Live view" ><i class="fa fa-play"></i> Play</a></li>        
+    		</ul>
+    		<div class="col-sm-3 col-md-3">
+    			<form class="navbar-form">            	
+					<div class='input-group' style='width: 100%;'>
+						<span class="input-group-addon" style='width: 40px;'><i class="fa fa-search" aria-hidden="true"></i></span>   						
+				   		<div data---="textbox__formsearch__class:form-control;placeholder:Enter form name...;autocomplete:searchForm;"></div>         
+					</div> 	            	            	
+            	</form>
+			</div>    			            
+            <ul class="nav navbar-nav navbar-right">
+            	<li data-if="help"><a href="@{#}/help" class="R"><i class="fa fa-cogs" aria-hidden="true"></i> Setting</a></li>
+                <li data-if="help"><a href="@{#}/help" class="R"><i class="fa fa-question" aria-hidden="true"></i> Help</a></li>
+            </ul>
+        </div>
+    </nav>
+</header>
+<main>
+	<div id='leftPanel' class='pr p5'>       
+       	<div data-jc="part__null__url:/templates/fabric/tab_designer.html" class='pr100'></div>       
+    </div>
+    <div id='rightPanel' class='pr p5'>    
+       	<div data-jc="part__null__url:/templates/fabric/tab_result.html" class='pr100'></div>       		
+    </div>	
+</main>
+<footer class='mt5'>
+	<div class='row'>	  	    
+  	    <div class='col-md-9'>	
+            <strong>Copyright &copy; 2019-2020 <a href="/">Fabric for component</a>.</strong> @(All right reserved)  
 		</div>
-		<div class="outer-center">
-			<div class="panel panel-default eventPanel">
-                        <div class="panel-body p5">
-			   <div data-jc="page" data-template="/templates/fabric/tab_result.html"></div>
-			</div>
-        	</div>
-		</div>			
-	</div>	
-</div>
-<script src="/app/js/app.js"></script>   
-<link rel="stylesheet" href="/debug/plugins/cm/codemirror.css">
-<link rel="stylesheet" href="/debug/plugins/cm/theme/monokai.css">
-<link rel="stylesheet" href="/debug/plugins/cm/theme/eclipse.css">
-<link rel="stylesheet" href="/debug/plugins/cm/addon/display/fullscreen.css">
-<script src="/debug/plugins/cm/codemirror.min.js"></script>
-<script src="/debug/plugins/cm/mode/javascript/javascript.min.js"></script>     
-<script src="/debug/plugins/cm/mode/htmlmixed/htmlmixed.min.js"></script>     
-<script src="/debug/plugins/cm/mode/xml/xml.min.js"></script>     
-<script src="/debug/plugins/cm/keymap/sublime.min.js"></script>
-<script src="/debug/plugins/cm/addon/edit/matchbrackets.min.js"></script>     
-<script src="/debug/plugins/cm/addon/display/fullscreen.min.js"></script>
-<script src="/debug/plugins/cm/addon/emmet/emmet.min.js"></script>
+		<div class='col-md-3'>	
+	        <b>Email:</b> <a href='mailto:@(saper639@gmail.com)'>@(saper639@gmail.com)</a>
+		</div>
+    </div> 
+</footer>
+
 <script>
-    var tab = Fab.tab; //tabs
-    var form = {};
-
-
-    $(function() {                
-    	Fab.init();
-
-    	WATCH('tab', function(path, value, type) {
-    		Fab.forScroll('.eventPanel', '.eScroll');   
-  		});  
-      
-      WATCH('curForm', function(path, value, type) {
-        SET('form', Fab.chForm.findItem('id', value));                            
-      });    	
-    });
+	//init tabs	
+	var tab = {design: 'html', result: 'view'};
+	var temp;
+	//init layout
+	$('main').enhsplitter({height: '300'});		
+	//new form
+	function formNew() {
+        SET('form', undefined);
+        SET('formsearch', undefined);
+        $('#View').html('');        
+        return;
+    };
+    //save form
+	function formSave() {        
+        if (!VALIDATE('form.*')) {
+            SETTER('notify', 'append', '@(Check the form and parameters for errors)', 2);
+            return;
+        };
+        AJAX('POST /fabric/save', form, (res, err) => {
+        	if (err) {
+                SETTER('notify', 'append', '@(Error when saving)', 2);
+                return;
+            }
+            SET('form.id', res.value.id);
+        	SETTER('notify', 'append', '@(Saved successfully)');
+        });        
+        return;
+    };
+    //live view
+    function liveView() {
+    	$('#View').html(form.html + ("<script>"+form.code+"<\/script>"));    	
+        /*if (temp && temp.name == form.param.jcpath) {
+            SET('form.param.jcpath', temp.value)
+        };*/
+        WATCH('*', function(path, value) {            
+        	if (form && form.param && form.param.jcpath && path.indexOf(form.param.jcpath) !== -1) {
+        		temp = { name: form.param.jcpath, value: eval(form.param.jcpath) };
+        		SET('result.json', JSON.stringify(eval(form.param.jcpath), null, 4));    
+        	}	
+        });	
+    	return;
+    }
+    //search form
+	function searchForm(comp) {		
+		FIND('autocomplete').attach(comp, function(q, render) {
+			AJAX('GET /fabric/query', {q:q}, (resp, err) => {
+				render(resp||[]);
+			});
+		}, function(value, input) { 
+			comp.set(value.name);
+			SET('form', value);                   	
+		}, 0, 38, 0);			
+	}		
 </script>
+</body>
+</html>

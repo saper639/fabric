@@ -1,2 +1,0 @@
-error				: Error
-err_form                        : Error! Check form

@@ -1,64 +1,53 @@
-<ul class="tabmenu" data-jc="tabmenu" data-jc-path="tab.design">
-    <li data-value="Html" data-class='text-orange'><i class="fa fa-html5"></i> Html</li>
-    <li data-value="Code" data-class='text-blue'><i class="fa fa-code"></i> Code</li>
-    <li data-value="Param"><i class="fa fa-sliders"></i> Params</li>
+<ul class="tabmenu pr" data-jc="tabmenu__tab.design">
+    <li data-value="html"  class='text-orange'><i class="fa fa-html5"></i> Html</li>
+    <li data-value="code"  class='text-blue'><i class="fa fa-code"></i> Code</li>    
+    <li data-value="param"><i class="fa fa-sliders"></i> Params</li>
 </ul>
-<div data-jc="visible" data-jc-path="tab.design" data-if="value === 'Html'" class="hidden pr">
-  <div class='eScroll'>
-    <!-- <textarea></textarea> -->
-    <div data-jc="codemirror" data-jc-config="type:text/html;required:true;height:auto;theme:monokai;keyMap:sublime;profile:xhtml;emmet:true;fullscreen:true" data-jc-path="form.html" style="position:relative;height:100%"></div>   
-  </div>
-</div>                
-<div data-jc="visible" data-jc-path="tab.design" data-if="value === 'Code'" class="hidden pr">
-	<div class='eScroll'>
-   		<div data-jc="codemirror" data-jc-config="type:javascript;height:auto;theme:monokai;keyMap:sublime;fullscreen:true" data-jc-path="form.code" style="position:relative;height:100%"></div>   
-   	</div>	
-</div>                
-<div data-jc="visible" data-jc-path="tab.design" data-if="value === 'Param'" class="hidden pr">
-  <table class='table table-bordered table-hover table-form'>
-    <colgroup>
-      <col width='50%'>
-      <col width='50%'>
-    </colgroup>  
-    <tr>
-      <td colspan='2'>                 
-        <div data-jc="textbox" data-jc-path="form.id" data-jc-config="align:form-control input-sm;placeholder:id;disabled:true" style='width:100px'></div>
-      </td>        
-    </tr>
-    <tr>
-      <td colspan='2'>                 
-        <div data-jc="textbox" data-jc-path="form.name" data-jc-config="align:form-control input-sm;placeholder:Name;required:true;maxlength:50">Name</div>
-      </td>        
-    </tr>
-    <tr>
-      <td colspan='2'>        
-        <div data-jc="textbox" data-jc-path="form.title" data-jc-config="align:form-control input-sm;placeholder:Title form;required:true;maxlength:150">Title form</div>
-      </td>
-    </tr>
-    <tr>
-      <td colspan='2'>        
-        <div data-jc="textbox" data-jc-path="form.param.jcpath" data-jc-config="align:form-control input-sm;placeholder:Value form;required:true;maxlength:30">Value form (jc-path)</div>
-      </td>
-    </tr>
-    <tr>
-      <td colspan='2'><b>Additional options</b></td>
-    </tr>
-    <tr>
-      <td>        
-        <div data-jc="textbox" data-jc-path="form.param.size.height" data-jc-config="align:form-control input-sm;type:number;">Height (px)</div>
-      </td>
-      <td>        
-        <div data-jc="textbox" data-jc-path="form.param.size.width" data-jc-config="align:form-control input-sm;type:number;">Width (px)</div>
-      </td>
-    </tr>    
-  </table>
-  <div data-jc="error" data-jc-path="error"></div>
-</div>       
-<script> 
-$(function() {
-  setTimeout2('tab_design', function() {     
-    UPDATE('tab.design');
-  }, 100)  
-}) 
-</script>
 
+<div data-bind="tab.design__visible:value == 'html'" class='invisible pr' style='height:94%'>	
+	<div data---="codemirror__form.html__type:htmlmixed;theme:monokai;keyMap:sublime;required:true;height:parent;fullscreen:true" class='pr100'></div>
+</div>
+
+<div data-bind="tab.design__visible:value == 'code'" class='invisible pr' style='height:94%'>
+	<div data-jc="codemirror__form.code__type:javascript;theme:monokai;keyMap:sublime;height:parent;fullscreen:true" class='pr100'></div>   
+</div>
+
+<div data-bind="tab.design__visible:value == 'param'" class='invisible pr' style='height:94%'>
+	<table class='table table-bordered table-hover table-form'>
+	    <colgroup>
+	      <col width='50%'>
+	      <col width='50%'>
+	    </colgroup>  
+        <tr>
+	      <td colspan='2'>                 
+	        <div data-jc="textbox__form.id__class:form-control input-sm;placeholder:id;disabled:true" style='width:100px'></div>
+	      </td>        
+    	</tr>
+	    <tr>
+	      <td colspan='2'>                 
+	        <div data-jc="textbox__form.type__class:form-control input-sm;placeholder:Name;required:true;maxlength:50">Name</div>
+	      </td>        
+	    </tr>
+	    <tr>
+	      <td colspan='2'>        
+	        <div data-jc="textbox__form.name__class:form-control input-sm;placeholder:Title;required:true;maxlength:150">Title</div>
+	      </td>
+	    </tr>
+	    <tr>
+	      <td colspan='2'>        
+	        <div data-jc="textbox__form.param.jcpath__class:form-control input-sm;placeholder:Value form;required:true;maxlength:50">Path to object</div>
+	      </td>
+	    </tr>
+	    <tr>
+	      <td colspan='2'><b>Additional options</b></td>
+	    </tr>
+	    <tr>
+	      <td>        
+	        <div data-jc="textbox__form.param.size.height__class:form-control input-sm;type:number;">Height (px)</div>
+	      </td>
+	      <td>        
+	        <div data-jc="textbox__form.param.size.width__class:form-control input-sm;type:number;">Width (px)</div>
+	      </td>
+	    </tr>    
+	</table>    
+</div>

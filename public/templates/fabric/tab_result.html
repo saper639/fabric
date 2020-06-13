@@ -1,14 +1,12 @@
-<ul class="tabmenu" data-jc="tabmenu" data-jc-path="tab.result">
-    <li data-value="View"><i class="fa fa-eye"></i> View</li>
-    <li data-value="Json" data-class='text-green'><i class="fa fa-file-code-o"></i> JSON</li>
+<ul class="tabmenu" data-jc="tabmenu__tab.result">
+    <li data-value="view"><i class="fa fa-eye"></i> View</li>
+    <li data-value="object" class='text-green'><i class="fa fa-file-code-o"></i> Object</li>
 </ul>
-<div data-jc="visible" data-jc-path="tab.result" data-if="value === 'View'" class="hidden pr">
- <div class='eScroll ovfl' id='View'></div>
-</div>                
-<div data-jc="visible" data-jc-path="tab.result" data-if="value === 'Json'" class="hidden pr">
-  <div class='eScroll'> 
-    <div data-jc="codemirror" data-jc-config="type:application/ld+json;height:auto;keyMap:sublime;theme:eclipse;fullscreen:true;brackets:true" data-jc-path="form.json" style="position:relative;height:100%"></div>  
-  </div>
-</div> 
-<script> 
-</script>
+
+<div data-bind="tab.result__visible:value == 'view'" class='invisible pr100' style='height:94%'>
+	<div class='eScroll ovfl' id='View'></div>
+</div>
+
+<div data-bind="tab.result__visible:value == 'object'" class='invisible pr100' style='height:94%'>
+	<div data-jc="codemirror__result.json__type:application/ld+json;keyMap:sublime;theme:eclipse;fullscreen:true;brackets:true;height:auto;" class='pr100'></div>  
+</div>

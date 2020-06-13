@@ -1,7 +1,9 @@
 .idea/
 tmp/
 debug.pid
+debug.js.json
 *.log
 *.tmp
 *.mp3
 logs/
+node_modules/
