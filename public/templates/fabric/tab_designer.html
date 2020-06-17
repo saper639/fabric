@@ -5,11 +5,11 @@
 </ul>
 
 <div data-bind="tab.design__visible:value == 'html'" class='invisible pr' style='height:94%'>	
-	<div data---="codemirror__form.html__type:htmlmixed;theme:monokai;keyMap:sublime;required:true;height:parent;fullscreen:true" class='pr100'></div>
+	<div data---="codemirror__fbrform.html__type:htmlmixed;theme:monokai;keyMap:sublime;required:true;height:parent;fullscreen:true" class='pr100'></div>
 </div>
 
 <div data-bind="tab.design__visible:value == 'code'" class='invisible pr' style='height:94%'>
-	<div data-jc="codemirror__form.code__type:javascript;theme:monokai;keyMap:sublime;height:parent;fullscreen:true" class='pr100'></div>   
+	<div data-jc="codemirror__fbrform.code__type:javascript;theme:monokai;keyMap:sublime;height:parent;fullscreen:true" class='pr100'></div>   
 </div>
 
 <div data-bind="tab.design__visible:value == 'param'" class='invisible pr' style='height:94%'>
@@ -20,22 +20,22 @@
 	    </colgroup>  
         <tr>
 	      <td colspan='2'>                 
-	        <div data-jc="textbox__form.id__class:form-control input-sm;placeholder:id;disabled:true" style='width:100px'></div>
+	        <div data-jc="textbox__fbrform.id__class:form-control input-sm;placeholder:id;disabled:true" style='width:100px'></div>
 	      </td>        
     	</tr>
 	    <tr>
 	      <td colspan='2'>                 
-	        <div data-jc="textbox__form.type__class:form-control input-sm;placeholder:Name;required:true;maxlength:50">Name</div>
+	        <div data-jc="textbox__fbrform.slug__class:form-control input-sm;placeholder:Slug;required:true;maxlength:50">Slug</div>
 	      </td>        
 	    </tr>
 	    <tr>
 	      <td colspan='2'>        
-	        <div data-jc="textbox__form.name__class:form-control input-sm;placeholder:Title;required:true;maxlength:150">Title</div>
+	        <div data-jc="textbox__fbrform.name__class:form-control input-sm;placeholder:Name;required:true;maxlength:150">Name</div>
 	      </td>
 	    </tr>
 	    <tr>
 	      <td colspan='2'>        
-	        <div data-jc="textbox__form.param.jcpath__class:form-control input-sm;placeholder:Value form;required:true;maxlength:50">Path to object</div>
+	        <div data-jc="textbox__fbrform.param.jcpath__class:form-control input-sm;placeholder:Value form;required:true;maxlength:50">Path to object</div>
 	      </td>
 	    </tr>
 	    <tr>
@@ -43,10 +43,10 @@
 	    </tr>
 	    <tr>
 	      <td>        
-	        <div data-jc="textbox__form.param.size.height__class:form-control input-sm;type:number;">Height (px)</div>
+	        <div data-jc="textbox__fbrform.param.size.height__class:form-control input-sm;type:number;">Height (px)</div>
 	      </td>
 	      <td>        
-	        <div data-jc="textbox__form.param.size.width__class:form-control input-sm;type:number;">Width (px)</div>
+	        <div data-jc="textbox__fbrform.param.size.width__class:form-control input-sm;type:number;">Width (px)</div>
 	      </td>
 	    </tr>    
 	</table>    

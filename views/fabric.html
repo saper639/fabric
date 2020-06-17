@@ -24,15 +24,15 @@
         </div>      
         <div class="collapse navbar-collapse" id="navbar-collapse" data---="selected__common.page__selector:li;class:active;">
         	<ul class="nav navbar-nav">
-      			<li data-if="new"><a href="#" onclick="formNew()" title="New form"><i class="fa fa-file-o" ></i> New</a></li>
-      			<li data-if="new"><a href="#" onclick="formSave()" title="Save form"><i class="fa fa-floppy-o" ></i> Save</a></li>      
-      			<li data-if="new"><a href="#" onclick="liveView()" title="Live view" ><i class="fa fa-play"></i> Play</a></li>        
+      			<li data-if="new"><a href="#" onclick="formFbrNew()" title="New form"><i class="fa fa-file-o" ></i> New</a></li>
+      			<li data-if="new"><a href="#" onclick="formFbrSave()" title="Save form"><i class="fa fa-floppy-o" ></i> Save</a></li>      
+      			<li data-if="new"><a href="#" onclick="liveFbrView()" title="Live view" ><i class="fa fa-play"></i> Play</a></li>        
     		</ul>
     		<div class="col-sm-3 col-md-3">
     			<form class="navbar-form">            	
 					<div class='input-group' style='width: 100%;'>
 						<span class="input-group-addon" style='width: 40px;'><i class="fa fa-search" aria-hidden="true"></i></span>   						
-				   		<div data---="textbox__formsearch__class:form-control;placeholder:Enter form name...;autocomplete:searchForm;"></div>         
+				   		<div data---="textbox__fbrformsearch__class:form-control;placeholder:Enter form name...;autocomplete:searchFbrForm;"></div>         
 					</div> 	            	            	
             	</form>
 			</div>    			            
@@ -69,51 +69,51 @@
 	//init layout
 	$('main').enhsplitter({height: '300'});		
 	//new form
-	function formNew() {
-        SET('form', undefined);
-        SET('formsearch', undefined);
+	function formFbrNew() {
+        SET('fbrform', undefined);
+        SET('fbrformsearch', undefined);
         $('#View').html('');        
         return;
     };
     //save form
-	function formSave() {        
-        if (!VALIDATE('form.*')) {
+	function formFbrSave() {        
+        if (!VALIDATE('fbrform.*')) {
             SETTER('notify', 'append', '@(Check the form and parameters for errors)', 2);
             return;
         };
-        AJAX('POST /fabric/save', form, (res, err) => {
+        AJAX('POST /fabric/save', fbrform, (res, err) => {
         	if (err) {
                 SETTER('notify', 'append', '@(Error when saving)', 2);
                 return;
             }
-            SET('form.id', res.value.id);
+            SET('fbrform.id', res.value.id);
         	SETTER('notify', 'append', '@(Saved successfully)');
         });        
         return;
     };
     //live view
-    function liveView() {
-    	$('#View').html(form.html + ("<script>"+form.code+"<\/script>"));    	
+    function liveFbrView() {
+    	$('#View').html(fbrform.html + ("<script>"+fbrform.code+"<\/script>"));    	
         /*if (temp && temp.name == form.param.jcpath) {
             SET('form.param.jcpath', temp.value)
         };*/
         WATCH('*', function(path, value) {            
-        	if (form && form.param && form.param.jcpath && path.indexOf(form.param.jcpath) !== -1) {
-        		temp = { name: form.param.jcpath, value: eval(form.param.jcpath) };
-        		SET('result.json', JSON.stringify(eval(form.param.jcpath), null, 4));    
+        	if (fbrform && fbrform.param && fbrform.param.jcpath && path.indexOf(fbrform.param.jcpath) !== -1) {
+        		temp = { name: fbrform.param.jcpath, value: eval(fbrform.param.jcpath) };
+        		SET('result.json', JSON.stringify(eval(fbrform.param.jcpath), null, 4));    
         	}	
         });	
     	return;
     }
     //search form
-	function searchForm(comp) {		
+	function searchFbrForm(comp) {		
 		FIND('autocomplete').attach(comp, function(q, render) {
-			AJAX('GET /fabric/query', {q:q}, (resp, err) => {
+			AJAX('GET /fabric/query', {q:q, list: true}, (resp, err) => {
 				render(resp||[]);
 			});
 		}, function(value, input) { 
 			comp.set(value.name);
-			SET('form', value);                   	
+			SET('fbrform', value);                   	
 		}, 0, 38, 0);			
 	}		
 </script>
